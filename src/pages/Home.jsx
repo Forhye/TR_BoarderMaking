@@ -2,7 +2,17 @@ import './Home.css'
 import Button from '../components/Button';
 import BoardList from '../components/BoardList';
 
+import { useNavigate } from "react-router-dom"
+
 const Home = ({ data }) => {
+
+    const navigate = useNavigate();
+
+    const handleCreate = (path) => {
+        navigate(path);
+    }
+
+
     return (
         <div className="Home">
             <h1 className="home_title">게시판 제목</h1>
@@ -16,7 +26,7 @@ const Home = ({ data }) => {
                     </select>
                 </div>
                 <div className="create">
-                    <Button type="PRIMARY" text="작성하기" />
+                    <Button type="PRIMARY" text="작성하기" onClick={() => handleCreate('/create')} />
                 </div>
             </div>
 

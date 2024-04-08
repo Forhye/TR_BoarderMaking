@@ -1,0 +1,52 @@
+.create_info {
+    padding: 85px;
+    font-size: 28px;
+    display: grid;
+    gap: 15px;
+}
+
+.create_info .title {
+    border-bottom: 1px solid;
+    padding: 15px;
+    display: flex;
+}
+
+.create_info .title input {
+    border: none;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.create_info .date {
+    display: flex;
+    gap: 20px;
+    font-size: 28px;
+    border-bottom: 1px solid;
+    padding: 15px;
+}
+
+.create_info .date input {
+    padding: 0px 20px;
+    border: none;
+    font-size: 20px;
+}
+
+.create_info .content {
+    padding: 15px;
+}
+
+.create_info textarea {
+    display: flex;
+    width: 100%;
+    min-height: 300px;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 20px;
+    resize: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.create_info button {
+    font-size: 28px;
+}
