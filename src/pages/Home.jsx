@@ -26,7 +26,10 @@ const Home = ({ data }) => {
                     </select>
                 </div>
                 <div className="create">
-                    <Button type="PRIMARY" text="작성하기" onClick={() => handleCreate('/create')} />
+                    <Button
+                        type="PRIMARY"
+                        text="작성하기"
+                        onClick={() => handleCreate('/create')} />
                 </div>
             </div>
 
