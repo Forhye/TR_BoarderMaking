@@ -1,0 +1,9 @@
+.Cal {
+    display: flex;
+    gap: 10px;
+}
+
+.Cal input {
+    width: 50px;
+    min-height: 30px;
+}
