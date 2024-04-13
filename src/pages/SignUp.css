@@ -1,0 +1,19 @@
+.SignUp {
+  display: grid;
+  gap: 10px;
+}
+
+.SignUp .Id {
+  display: flex;
+  gap: 20px;
+  padding-left: 15px;
+}
+
+.SignUp .Pw {
+  display: flex;
+  gap: 20px;
+}
+
+.SignUp button {
+  max-width: fit-content;
+}
