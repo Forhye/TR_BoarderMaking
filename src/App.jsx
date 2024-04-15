@@ -7,25 +7,31 @@ import Home from "./pages/Home";
 import Info from "./pages/Info";
 import Exam from "./pages/Exam";
 import SignUp from "./pages/SignUp";
+import FunctionExam from "./components/FunctionExam";
 
 function App() {
-  const [boardUpdate, setUpdate] = useState([]);
+  const [board, setBoard] = useState([]);
 
   const onUpdate = (data) => {
-    setUpdate([data, ...boardUpdate]);
+    const newData = {
+      id: board.length + 1,
+      ...data,
+    };
+    setBoard([newData, ...board]);
   };
+
+  console.log(board);
 
   const [userSign, setUserSign] = useState([]);
 
   const userSignUpdate = (data) => {
     setUserSign([data, ...userSign]);
-    console.log(data);
   };
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home data={boardUpdate} />}></Route>
+        <Route path="/" element={<Home data={board} />}></Route>
         <Route path="/info/:id" element={<Info />}></Route>
         <Route path="/create" element={<Create onUpdate={onUpdate} />}></Route>
         <Route path="/exam" element={<Exam />}></Route>
@@ -33,6 +39,7 @@ function App() {
           path="/signup"
           element={<SignUp userSignUp={userSignUpdate} />}
         ></Route>
+        <Route path="/exam2" element={<FunctionExam />}></Route>
       </Routes>
     </>
   );
