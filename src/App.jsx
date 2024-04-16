@@ -5,9 +5,10 @@ import "./App.css";
 import Create from "./pages/Create";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
-import Exam from "./pages/Exam";
 import SignUp from "./pages/SignUp";
-import FunctionExam from "./components/FunctionExam";
+
+import Exam from "./pages/Exam";
+import Exam2 from "./pages/Exam2";
 
 function App() {
   const [board, setBoard] = useState([]);
@@ -19,8 +20,6 @@ function App() {
     };
     setBoard([newData, ...board]);
   };
-
-  console.log(board);
 
   const [userSign, setUserSign] = useState([]);
 
@@ -39,7 +38,7 @@ function App() {
           path="/signup"
           element={<SignUp userSignUp={userSignUpdate} />}
         ></Route>
-        <Route path="/exam2" element={<FunctionExam />}></Route>
+        <Route path="/exam3" element={<Exam2 />}></Route>
       </Routes>
     </>
   );
