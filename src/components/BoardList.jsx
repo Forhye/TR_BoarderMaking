@@ -1,14 +1,14 @@
-import './BoardList.css'
-import BoardItem from './BoardItem';
+import "./BoardList.css";
+import BoardItem from "./BoardItem";
 
-const BoardList = ({ data }) => {
-    return (
-        <div>
-            {data.map((item) =>
-                <BoardItem key={item.id} {...item} />
-            )}
-        </div>
-    )
-}
+const BoardList = ({ data, getId }) => {
+  return (
+    <div>
+      {data.map((item) => (
+        <BoardItem key={item.id} {...item} getId={getId} />
+      ))}
+    </div>
+  );
+};
 
 export default BoardList;

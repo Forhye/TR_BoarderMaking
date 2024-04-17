@@ -4,7 +4,7 @@ import BoardList from "../components/BoardList";
 
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ data }) => {
+const Home = ({ data, getId }) => {
   const navigate = useNavigate();
 
   const handleCreate = (path) => {
@@ -33,7 +33,7 @@ const Home = ({ data }) => {
       </div>
 
       <div className="list">
-        <BoardList data={data} />
+        <BoardList data={data} getId={getId} />
       </div>
 
       <div>페이징</div>

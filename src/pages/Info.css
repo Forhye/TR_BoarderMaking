@@ -48,5 +48,15 @@
 }
 
 .create_info button {
-  font-size: 28px;
+  font-size: 20px;
+  padding: 15px 30px;
+}
+
+.create_info .buttonArea {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin: 10px;
+
+  justify-content: end;
 }
