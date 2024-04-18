@@ -1,12 +1,24 @@
 import "./Info.css";
 
-import { useParams } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
-const Info = ({ boardInfo }) => {
+const Info = ({ boardInfo, onDelete }) => {
   const param = useParams();
 
-  console.log(boardInfo);
+  const navigate = useNavigate();
+  //  const handleNavi = (path) => {
+  //    navigate(path);
+  //  };
+
+  const onClickUpdate = () => {
+    navigate(`/update/${boardInfo.id}`, { state: { boardInfo } });
+  };
+
+  const onClickDelete = () => {
+    onDelete(boardInfo.id);
+    navigate("/");
+  };
 
   return (
     <div className="create_info">
@@ -30,8 +42,8 @@ const Info = ({ boardInfo }) => {
       </div>
 
       <div className="buttonArea">
-        <Button type="DELETE" text="삭제하기" />
-        <Button type="PRIMARY" text="수정하기" />
+        <Button type="DELETE" text="삭제하기" onClick={onClickDelete} />
+        <Button type="PRIMARY" text="수정하기" onClick={onClickUpdate} />
       </div>
     </div>
   );

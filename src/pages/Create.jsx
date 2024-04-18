@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Create = ({ onUpdate }) => {
+const Create = ({ onCreate }) => {
   const navigate = useNavigate();
 
   const handleCreate = (path) => {
@@ -28,7 +28,7 @@ const Create = ({ onUpdate }) => {
   };
 
   const submit = () => {
-    onUpdate(dataInfo);
+    onCreate(dataInfo);
     handleCreate("/");
   };
 

@@ -1,0 +1,62 @@
+.update {
+  padding: 85px;
+  font-size: 28px;
+  display: grid;
+  gap: 15px;
+}
+
+.update .title {
+  border-bottom: 1px solid;
+  padding: 15px;
+  display: flex;
+}
+
+.update .title input {
+  border: none;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.update .date {
+  display: flex;
+  gap: 20px;
+  font-size: 28px;
+  border-bottom: 1px solid;
+  padding: 15px;
+}
+
+.update .date input {
+  padding: 0px 20px;
+  border: none;
+  font-size: 20px;
+}
+
+.update .content {
+  padding: 15px;
+}
+
+.update textarea {
+  display: flex;
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+  border-radius: 15px;
+  margin-top: 20px;
+  resize: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.update button {
+  font-size: 20px;
+  padding: 15px 30px;
+}
+
+.update .buttonArea {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin: 10px;
+
+  justify-content: end;
+}
