@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import "./App.css";
 
 import Create from "./pages/Create";
@@ -14,10 +14,32 @@ const mockData = [
     date: "2024-04-15",
     content: "1번째 글의 내용ㅇㅇㅇㅇㅇ",
   },
+  {
+    id: 2,
+    title: "2번째 글 제목",
+    date: "2024-04-25",
+    content: "2번째 글의 내용ㅇㅇㅇㅇㅇ",
+  },
 ];
 
+const boardReducer = (state, action) => {
+  switch (action.type) {
+    case "CREATE":
+      return [action.data, ...state];
+    case "UPDATE":
+      return state.map((item) =>
+        item.id === action.data.id ? action.data : item
+      );
+    case "DELETE":
+      console.log(action.data);
+      return state.filter((item) => item.id !== action.data);
+    default:
+      return state;
+  }
+};
+
 function App() {
-  const [board, setBoard] = useState(mockData);
+  const [board, dispatch] = useReducer(boardReducer, [...mockData]);
   const [id, setId] = useState();
 
   //★★자식이 부모에게 프롭스로 전달할수는 없지만
@@ -32,23 +54,27 @@ function App() {
   //변수.find((파인드변수)=>파인드변수.찾으려는 값 === 찾으려는 값)
 
   const onCreate = (data) => {
-    const newData = {
-      id: board.length + 1,
-      ...data,
-    };
-    setBoard([newData, ...board]);
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: board.length + 1,
+        ...data,
+      },
+    });
   };
 
   const onUpdate = (data) => {
-    const updateBoard = board.map((item) =>
-      item.id === data.id ? { ...item, ...data } : item
-    );
-    setBoard(updateBoard);
+    dispatch({
+      type: "UPDATE",
+      data: data,
+    });
   };
 
   const onDelete = (id) => {
-    const deleteBoard = board.filter((item) => item.id !== id);
-    setBoard(deleteBoard);
+    dispatch({
+      type: "DELETE",
+      data: id,
+    });
   };
 
   return (

@@ -17,10 +17,10 @@ const Home = ({ data, getId }) => {
 
       <div className="action_tab">
         <div className="sort">
-          <select name="" id="">
-            <option selected>정렬</option>
-            <option>최신순</option>
-            <option>오래된순</option>
+          <select>
+            <option value="">정렬</option>
+            <option value="">최신순</option>
+            <option value="">오래된순</option>
           </select>
         </div>
         <div className="create">
