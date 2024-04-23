@@ -1,11 +1,11 @@
 import "./BoardList.css";
 import BoardItem from "./BoardItem";
 
-const BoardList = ({ data, getId }) => {
+const BoardList = ({ data }) => {
   return (
     <div>
       {data.map((item) => (
-        <BoardItem key={item.id} {...item} getId={getId} />
+        <BoardItem key={item.id} {...item} />
       ))}
     </div>
   );

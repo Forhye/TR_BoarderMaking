@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useState, useReducer } from "react";
+import { useState, useReducer, useRef, createContext } from "react";
 import "./App.css";
 
 import Create from "./pages/Create";
@@ -38,12 +38,19 @@ const boardReducer = (state, action) => {
   }
 };
 
+//+ context
+export const BoardStateContext = createContext();
+export const GetIdContext = createContext();
+
 function App() {
   const [board, dispatch] = useReducer(boardReducer, [...mockData]);
   const [id, setId] = useState();
 
   //★★자식이 부모에게 프롭스로 전달할수는 없지만
   //★★★자식에게서 데이터를 받아올 수는 있다.
+
+  //+ useRef
+  const idRef = useRef(3);
 
   const getId = (id) => {
     setId(id);
@@ -57,7 +64,7 @@ function App() {
     dispatch({
       type: "CREATE",
       data: {
-        id: board.length + 1,
+        id: idRef.current++,
         ...data,
       },
     });
@@ -79,18 +86,25 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home data={board} getId={getId} />}></Route>
-        <Route
-          path="/info/:id"
-          element={<Info boardInfo={boardInfo} onDelete={onDelete} />}
-        ></Route>
-        <Route path="/create" element={<Create onCreate={onCreate} />}></Route>
-        <Route
-          path="/update/:id"
-          element={<Update getId={getId} onUpdate={onUpdate} />}
-        ></Route>
-      </Routes>
+      <BoardStateContext.Provider value={board}>
+        <GetIdContext.Provider value={getId}>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route
+              path="/info/:id"
+              element={<Info boardInfo={boardInfo} onDelete={onDelete} />}
+            ></Route>
+            <Route
+              path="/create"
+              element={<Create onCreate={onCreate} />}
+            ></Route>
+            <Route
+              path="/update/:id"
+              element={<Update getId={getId} onUpdate={onUpdate} />}
+            ></Route>
+          </Routes>
+        </GetIdContext.Provider>
+      </BoardStateContext.Provider>
     </>
   );
 }
