@@ -8,7 +8,7 @@ import { BoardStateContext } from "../App";
 
 function selectReducer(state, action) {
   let sortedState;
-  switch (action) {
+  switch (action.type) {
     case "DESC":
       sortedState = [...state].sort((a, b) => {
         return b.id - a.id;
@@ -19,6 +19,9 @@ function selectReducer(state, action) {
         return a.id - b.id;
       });
       return sortedState;
+    case "SEARCH":
+      console.log("검색데이터", action.data);
+      return action.data;
     default:
       return state;
   }
@@ -50,11 +53,14 @@ const Home = () => {
   };
 
   const searchButton = () => {
-    filterSearch();
+    const filterdSearch = filterSearch();
+    dispatch({
+      type: "SEARCH",
+      data: filterdSearch,
+    });
   };
-
   const selectedChange = (e) => {
-    dispatch(e.target.value);
+    dispatch({ type: e.target.value });
     //dispatch({type : e.target.value}); ->  switch(action.type)
   };
 
