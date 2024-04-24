@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import BoardList from "../components/BoardList";
 
 import { useNavigate } from "react-router-dom";
-import { useContext, useReducer } from "react";
+import { useContext, useReducer, useState } from "react";
 import { BoardStateContext } from "../App";
 
 function selectReducer(state, action) {
@@ -33,6 +33,25 @@ const Home = () => {
   };
 
   const [board, dispatch] = useReducer(selectReducer, data);
+  const [search, setSearch] = useState("");
+
+  const onSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filterSearch = () => {
+    if (search === "") {
+      return data;
+    }
+    const searchData = data.filter((data) =>
+      data.title.toLowerCase().includes(search.toLowerCase())
+    );
+    return searchData;
+  };
+
+  const searchButton = () => {
+    filterSearch();
+  };
 
   const selectedChange = (e) => {
     dispatch(e.target.value);
@@ -71,9 +90,11 @@ const Home = () => {
           className="input"
           type="text"
           placeholder="검색어를 입력하세요"
+          onChange={onSearch}
+          value={search}
         ></input>
         <div className="button">
-          <Button type="SEARCH" text="검색" />
+          <Button type="SEARCH" text="검색" onClick={searchButton} />
         </div>
       </div>
     </div>

@@ -31,7 +31,6 @@ const boardReducer = (state, action) => {
         item.id === action.data.id ? action.data : item
       );
     case "DELETE":
-      console.log(action.data);
       return state.filter((item) => item.id !== action.data);
     default:
       return state;
