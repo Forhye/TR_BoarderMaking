@@ -7,18 +7,19 @@ import { useContext, useReducer, useState } from "react";
 import { BoardStateContext } from "../App";
 
 function selectReducer(state, action) {
-  let sortedState;
+  let sortedState; //비어있는 변수를 선언 (스타일차이)
   switch (action.type) {
     case "DESC":
       sortedState = [...state].sort((a, b) => {
+        // 변수에 state값과 정렬함수를 추가
         return b.id - a.id;
       });
       return sortedState;
     case "ASC":
-      sortedState = [...state].sort((a, b) => {
+      return [...state].sort((a, b) => {
+        //바로 정렬함수를 리턴
         return a.id - b.id;
       });
-      return sortedState;
     case "SEARCH":
       console.log("검색데이터", action.data);
       return action.data;
